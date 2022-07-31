@@ -16,13 +16,16 @@ router.post('/api/users/signup', [
 
 	const errors = validationResult(req)
 	if(!errors.isEmpty()) {
+
 		throw new RequestValidationError(errors.array())
 	}
 
 	const {email, password} = req.body;
 
 	throw new DatabaseConnectionError()
-	res.send({})
+	res.send({email, password})
+
+
 })
 
 export { router as signupRouter };
