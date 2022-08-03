@@ -8,7 +8,7 @@ beforeAll(async () => {
 	const mongoUri = mongo.getUri()
 	await mongoose.connect(mongoUri)
 
-	process.env.JWT_KEY = 'asdasdasd'
+	process.env.JWT_KEY = 'unimportantKey'
 })
 
 beforeEach(async () => {
