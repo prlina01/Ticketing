@@ -4,9 +4,10 @@ interface UseRequestProps {
 	url: string;
 	method: string;
 	body: {};
+	onSuccess?(data?: any): void
 }
 
-export default ({url, method, body}: UseRequestProps) => {
+export default ({url, method, body, onSuccess}: UseRequestProps) => {
 	const [errors, setErrors] = useState<JSX.Element|null>(null)
 	method = method.toUpperCase()
 	const doRequest = async () => {
@@ -24,6 +25,9 @@ export default ({url, method, body}: UseRequestProps) => {
 					response = {}
 			}
 
+			if (onSuccess) {
+				onSuccess(response.data)
+			}
 			return response.data
 		} catch (err: any) {
 			setErrors(

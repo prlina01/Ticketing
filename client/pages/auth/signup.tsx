@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import {FormEvent, useState} from "react";
 import useRequest from "../../hooks/use-request";
+import Router from "next/router";
 
 const Signup: NextPage = () => {
 	const [email, setEmail] = useState('')
@@ -10,12 +11,15 @@ const Signup: NextPage = () => {
 		method: 'post',
 		body: {
 			email, password
-		}
+		},
+		onSuccess: () => Router.push('/')
 	})
 
 	const onSubmit = async (e: FormEvent) => {
 		e.preventDefault()
+
 		await doRequest()
+
 	}
 
 	return (
