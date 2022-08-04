@@ -7,7 +7,7 @@ const nextConfig = {
   //       return config
   //   },
 
-    assetPrefix: "."
+    // assetPrefix: "."
 }
 
 module.exports = nextConfig
