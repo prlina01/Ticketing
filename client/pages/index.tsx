@@ -11,16 +11,15 @@ const Home: NextPage = ({currentUser}: any) => {
   )
 }
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async ({req}) => {
     if (typeof window === 'undefined') {
         // we are on the server
         // requests should be made to http://SERVICENAME.NAMESPACE.svc.cluster.local....
         const {data} = await axios.get(
             'http://ingress-nginx-controller.ingress-nginx.cluster.local/api/users/currentuser',
             {
-                headers: {
-                    Host: 'ticketing.dev'
-                }
+                // @ts-ignore
+                headers: req.headers
             }
         )
 
