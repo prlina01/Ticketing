@@ -1,10 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.css'
 
-import type { AppProps } from 'next/app'
+import buildClient from "../api/build-client";
+import {AppContext, AppProps} from "next/app";
 
 
-function MyApp({ Component, pageProps }: AppProps) {
+const AppComponent= ({ Component, pageProps } : AppProps) => {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+AppComponent.getInitialProps = async (appContext: AppContext) => {
+  const client = buildClient(appContext.ctx)
+  const { data } = await client.get('/api/users/currentuser')
+
+  return data
+}
+
+export default AppComponent
