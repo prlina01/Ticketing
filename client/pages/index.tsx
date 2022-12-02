@@ -9,7 +9,10 @@ const Home: NextPage = ({currentUser}: any) => {
 }
 
 Home.getInitialProps = async (context) => {
-    console.log('Why don\'t i show up?')
+    const client = buildClient(context)
+    const { data } = await client.get('/api/users/currentuser')
+
+    return data
 }
 
 
