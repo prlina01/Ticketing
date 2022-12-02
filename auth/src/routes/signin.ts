@@ -12,7 +12,7 @@ router.post('/api/users/signin',
 	[
 		body('email')
 			.isEmail()
-			.withMessage('EMail must be valid'),
+			.withMessage('Email must be valid'),
 		body('password')
 			.trim()
 			.notEmpty()
