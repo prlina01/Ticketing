@@ -4,8 +4,9 @@ import 'express-async-errors'
 import {json} from 'body-parser'
 
 
-import {errorHandler, NotFoundError} from "@cool-tickets/common";
+import {errorHandler, NotFoundError, currentUser} from "@cool-tickets/common";
 import cookieSession from "cookie-session";
+import {createTicketRouter} from "./routes/new";
 
 
 const app = express()
@@ -18,6 +19,9 @@ app.use(
 	})
 )
 
+app.use(createTicketRouter)
+
+app.use(currentUser)
 
 app.get('*', () => {
 	throw new NotFoundError()
