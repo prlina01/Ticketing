@@ -19,9 +19,11 @@ app.use(
 	})
 )
 
+app.use(currentUser)
 app.use(createTicketRouter)
 
-app.use(currentUser)
+
+
 
 app.get('*', () => {
 	throw new NotFoundError()
