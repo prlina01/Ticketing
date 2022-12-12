@@ -23,6 +23,6 @@ it('can fetch a list of tickets', async () => {
 		.send()
 		.expect(200)
 
-	expect(response.body.length).toEqual(3)
+	expect(response.body.length).toEqual(4)
 
 })
